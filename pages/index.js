@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Navbar from "../components/Navbar/navbar";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       </Head>
 
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+        <Navbar />
         <h1 className="text-4xl font-bold">happy making new project :)</h1>
       </main>
 
