@@ -31,11 +31,13 @@ function Navbar() {
   });
   return (
     <Fragment>
-      <nav className="fixed mx-auto bg-white top-0 right-0 inset-x-auto z-10 w-full py-6">
-        <div className="flex mx-auto my-auto justify-between px-8 lg:px-14 w-full ">
+      <nav className="fixed mx-auto bg-white top-0 right-0 inset-x-auto z-10 w-full pt-5 md:py-6">
+        <div className="flex mx-auto justify-between my-auto px-8 lg:px-24 w-full ">
           <div className="flex lg:mx-0">
             <Link href="/">
-              <a className="font-bold text-2xl">LOGO</a>
+              <a className="py-1">
+                <img className="h-auto w-28" src="/news.svg" />
+              </a>
             </Link>
           </div>
           <div className="flex my-auto">
@@ -55,29 +57,39 @@ function Navbar() {
                   <animated.rect width="40" height="4" rx="2" style={third} />
                 </svg>
               </div>
-              <div className="font-semibold uppercase borders line select-none cursor-pointer">
-                <ul className="hidden md:flex">
-                  {MenuItems.map((item, index) => {
-                    return (
-                      <li
-                        key={index}
-                        className=""
-                        className={
-                          router.pathname == item.url
-                            ? "text-blue-700 px-4 pb-2"
-                            : "hover:text-blue-700 pb-2 px-4"
-                        }
-                      >
-                        <Link href={item.url}>
-                          <a className="text-base">{item.list}</a>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
+              <div className="uppercase borders cursor-pointer  ">
+                <div className="hidden md:flex">
+                  <button className="hover:bg-blue-600 hover:text-white text-xs text-gray-100 text-blue-600 focus:border-orange-300 appearance-none font-bold rounded-md py-1 px-2 mx-2">
+                    DAFTAR
+                  </button>
+                  <button className="border-4 border-blue-600 hover:bg-blue-600 text-xs hover:border-blue- focus:border-orange-300 appearance-none hover:text-gray-100 rounded-md font-bold text-blue-700 py-1 px-2 mx-2">
+                    MASUK
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+        <div className="justify-center font-bold mt-6 flex">
+          <ul className="hidden md:flex">
+            {MenuItems.map((item, index) => {
+              return (
+                <li
+                  key={index}
+                  className=""
+                  className={
+                    router.pathname == item.url
+                      ? "text-xs lg:text-sm px-4 sm:px-3 pb-2"
+                      : "text-xs lg:text-sm hover:text-blue-700 pb-2 px-4 sm:px-3"
+                  }
+                >
+                  <Link href={item.url}>
+                    <a>{item.list}</a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
         {/* NAVBAR MOBILE VER */}
         <Transition
@@ -117,19 +129,6 @@ function Navbar() {
           )}
         </Transition>
       </nav>
-      <style jsx>
-        {`
-          .line .line:hover {
-            border-bottom: 2px solid #1e3a8a;
-            transition: all 0.2s;
-          }
-
-          .borders {
-            border-bottom: 2px solid transparent;
-            border-top: 2px solid transparent;
-          }
-        `}
-      </style>
     </Fragment>
   );
 }
